@@ -1,0 +1,19 @@
+ 	[std::bad_alloc thrown]	
+ 	KernelBase.dll!00007ffa649079da()	Unknown
+ 	vcruntime140.dll!00007ffa3d095277()	Unknown
+>	interpMain.exe!__scrt_throw_std_bad_alloc() Line 35	C++
+ 	interpMain.exe!operator new(unsigned __int64 size) Line 49	C++
+ 	interpMain.exe!std::_Allocate_manually_vector_aligned<std::_Default_allocate_traits>(const unsigned __int64 _Bytes) Line 193	C++
+ 	interpMain.exe!std::vector<double,std::allocator<double>>::_Buy_raw(unsigned __int64 _Newcapacity) Line 2035	C++
+ 	interpMain.exe!std::vector<double,std::allocator<double>>::_Construct_n<>(const unsigned __int64 _Count) Line 2112	C++
+ 	interpMain.exe!std::vector<double,std::allocator<double>>::vector<double,std::allocator<double>>(const unsigned __int64 _Count, const std::allocator<double> & _Al) Line 681	C++
+ 	interpMain.exe!topeqx::NPointInterp<std::vector<double,std::allocator<double>>>::NPointInterp<std::vector<double,std::allocator<double>>>(int degree_, topeqx::QLNPInterpModeID mode_) Line 45	C++
+ 	interpMain.exe!topeqx::NPointInterpBasic<std::vector<double,std::allocator<double>>>::NPointInterpBasic<std::vector<double,std::allocator<double>>>(int degree_, topeqx::QLNPInterpModeID mode_) Line 14	C++
+ 	interpMain.exe!std::make_unique<topeqx::NPointInterpBasic<std::vector<double,std::allocator<double>>>,int &,enum topeqx::QLNPInterpModeID &,0>(int & <_Args_0>, topeqx::QLNPInterpModeID & <_Args_1>) Line 3659	C++
+ 	interpMain.exe!topeqx::InterpFactory::create(topeqx::QLInterpID interp_id, int degrees, topeqx::QLNPInterpModeID mode, double y1stP1, double y1stPn) Line 31	C++
+ 	interpMain.exe!InterpWrapper::InterpWrapper(const std::vector<double,std::allocator<double>> & y) Line 13	C++
+ 	interpMain.exe!main() Line 39	C++
+ 	[Inline Frame] interpMain.exe!invoke_main() Line 78	C++
+ 	interpMain.exe!__scrt_common_main_seh() Line 288	C++
+ 	kernel32.dll!00007ffa66a0e8d7()	Unknown
+ 	ntdll.dll!00007ffa67e8c3fc()	Unknown
