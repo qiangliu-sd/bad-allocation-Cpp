@@ -3,21 +3,23 @@
 
 My algorithms for mathematical interpolation are defined as `template <typename Container>` classes. The actual instance is created as `unique_ptr` via a factory. Some of the header files are in [C++](C++).
 
-With C++20 in Visual Studio 2026, the compiled executable works sometimes but **crashes** randomly, with exceptions such as **bad allocation** or **vector too long**. These are mysterious exceptions, beyond what you can find on Google.
+With C++20 in Visual Studio 2026, the **release-build** executable works sometimes but **crashes** randomly, with exceptions such as **bad allocation** or **vector too long**. These are mysterious exceptions, beyond possible causes that you can find on Google.
 
 By **turning on breaks with C++ exception**:
-> Debug -> Windows -> Exception Setting
+> Debug -> Windows -> Exception Settings
 
 as follows:
 
 ![breaks with C++ exception](xcp/break-vs2026.png)
 
-I was able to locate the codes that throw, 
+I was able to track the codes that throw `std::bad_alloc`,
 
 ![bad allocation](xcp/bad_alloc-xcp.png)
 
+and `std::length_error`,
+
 ![vector too long](xcp/vector_too_long.png)
 
-With the call stacks for [std::bad_alloc](xcp/bad_alloc.txt) and [std::length_error](xcp/length_error.txt), I see exceptions arising from the entire `vector` as the template parameter of the `NPointInterp` constructor within `make_unique`.
+With the call stacks for [std::bad_alloc](xcp/bad_alloc.txt) and [std::length_error](xcp/length_error.txt), I see exceptions arising from the `vector` as the template parameter of the `NPointInterp` class within `make_unique`.
 
-Looks like `NPointInterp` was trying to initiate `vector<double>` but failed. But why the initiation fails is not clear to me. Therefore, it is reported here.
+Looks like `NPointInterp` was trying to initiate `vector<double>` but failed. Why the initiation fails is not clear to me. Note that the **debug-build** executable does not crash. It is reported here as a possble reference.
